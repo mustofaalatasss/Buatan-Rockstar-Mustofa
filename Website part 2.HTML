@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Website (2) Mustofa</title>
+     <link rel="icon"  href="favicon.ico">
+     <style type="text/css">
+         body {background-image:linear-gradient(rgba(147, 112, 219, 0.85), rgba(147, 112, 219, 0.85)), url("rockstar.png");}
+
+
+     	.paragraf1 {text-align: center;}
+     	img {width: 500px;object-fit: contain;}
+
+     	#warna {width: 500px;height: 400px}
+
+       
+        #merah {width: 50px;height: 50px;background-color: red;border-radius: 50px;float: left;margin: 0 5px;cursor: pointer;}
+        #biru {width: 50px;height: 50px;background-color: blue;border-radius: 50px;float: left;margin: 0 5px;cursor: pointer;}
+        #putih {width: 50px;height: 50px;background-color: white;border-radius: 50px;float: left;margin: 0 5px;cursor: pointer;}
+        #logo {width: 150px;}
+
+        .gta6 {width: 300px;clear: both;margin-top: 20px;border-radius: 100px;margin-left: 40px;}
+
+        .garisbawah {text-decoration: underline;}
+
+        .garispanjang {border: 0;border-top: 5px solid yellow;margin-top: 30px;width: 100%;clear: both;}
+
+        .tebal {font-weight: bold}
+
+
+        .background {display: none;position: fixed;z-index: 9999;left: 0;top: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.7);}
+        #isi-kotak {background-color: white;width: 320px;padding: 30px;border-radius: 15px;text-align: center;position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);}
+        #tutup-pesan {background-color: #333;color: white;border: none;padding: 10px 25px;border-radius: 5px;cursor: pointer;font-weight: bold;margin-top: 15px;}
+        #tutup-pesan:hover {background-color: red;}
+
+
+
+
+
+
+
+
+
+     </style>
+    
+</head>
+<body>
+	<h1 class="paragraf1">Pecinta Game Rockstar </h1>
+	<div>
+	  <img id="warna" src="ps 5 merah1.png">
+	</div>
+
+	<div>
+		<h3>Pilihan warna kesukaan playstation</h3>
+    <div id="merah"></div>
+	<div id="biru"></div>
+	<div id="putih"></div>	
+
+
+
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+   <h2 style="clear: both;">Game favorit anda di rockstar</h2>
+   <input type="text" id="input"> <button id="peringatan">Submit</button>
+
+   <h2 style="clear: both"; id="berubah2"> Gta 6 rilis</h2>
+   <button id="berubah">Jawaban</button>
+  
+
+   <div> <h3>Click gambar untuk promo discount Game rockstar di STEAM !</h3>
+   	<img id="gta6" class="gta6" src="gta 6.png "></div>
+
+
+
+  <h3>Jika error saat claim discount gambar  <span class="garisbawah">Masukan password dibawah !!!</span></h3>
+  <p style="font-style: italic;">kode = R0ckstar66721,</p>
+  <input type="password" id="kunci">
+  <button id="pintu">Submit</button>
+
+
+  <hr class="garispanjang">
+
+  <h1 style="text-align: center;">Game rockstar tukang php</h1>
+
+  <p class="tebal">Top score : <span id="topScore"></span></p>
+    <p class="tebal">Total waktu : <span id="waktu"></span></p>
+
+    <img id="logo" src="rockstar game logo.png">
+
+  <div id="kotak-pesan" class="background">
+    
+       <div id="isi-kotak">
+        <h3 id="tekspesan"></h3>
+        <button id="tutup-pesan">Ngerti ga !!!</button>
+        
+        </div>
+  </div>
+
+
+       
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+   <script type="text/javascript">
+   	
+    document.getElementById("merah").onclick = function () {document.getElementById("warna").src = "ps 5 merah1.png";}
+    document.getElementById("biru").onclick = function () {document.getElementById("warna").src = "ps 5 biru1.png";}
+    document.getElementById("putih").onclick = function () {document.getElementById("warna").src = "ps 5 putih.webp";}
+
+    document.getElementById("peringatan").onclick = function () { var teksInput = document.getElementById("input").value; var jawaban = teksInput.trim().toLowerCase();
+    if (jawaban === "gta 5"||jawaban==="gta v") {alert("Selera anda Bagus");} else if (jawaban ==="bully") {alert ("Hmm selera nya bagus tapi sudah kuno");}
+    else {alert("Game "  + teksInput +  "juga seru tapi masih dibawah gta");}}
+
+
+   document.getElementById("berubah").onclick = function (){document.getElementById("berubah2").innerHTML = "Ntalah,cuman tuhan yang tau";}
+   document.getElementById("gta6").onclick = function () {document.getElementById("gta6").style.display = "none";}
+
+   var kotak = document.getElementById("kotak-pesan");var teks = document.getElementById("tekspesan");var tombolTutup = document.getElementById("tutup-pesan"); 
+   tombolTutup.onclick = function () {kotak.style.display = "none";}
+
+   document.getElementById("pintu").onclick = function () {var prank = document.getElementById("kunci").value; var beruntung = "R0ckstar66721";
+   if (prank==beruntung) {teks.innerHTML = "Anda terlalu niat nyari gratisan, sama kyk rockstar tukang PHP";}
+   else {teks.innerHTML = "Kode nya salah ketik lagi yg bener, udah gratisan masih salah pula";}kotak.style.display = "block";}
+
+
+
+    var gta = 1;
+    var start ="";
+    var end = "";
+    var totalWaktu = "";
+
+    var topScore = localStorage.getItem("topScore");document.getElementById("topScore").innerHTML = topScore + "s";
+    
+
+   
+
+   
+
+    tampilkanGambar ();
+    function tampilkanGambar () { var top = Math.random() * 400; var left = Math.random() * 400; start = new Date().getTime();  document.getElementById("logo").src = "rockstar game logo.png"; document.getElementById("logo").style.height = 200 + "px";document.getElementById("logo").style.width = 200 + "px"; document.getElementById("logo").style.top = top + "px"; document.getElementById("logo").style.left = left + "px";  document.getElementById("logo").style.position = "relative";document.getElementById("logo").style.display = "block";}
+
+   document.getElementById("logo").onclick = function () {document.getElementById("logo").src = "tidak rilis rilis.png"; setTimeout (Jeda,500);if (gta < 5) {setTimeout(tampilkanGambar,600);gta++;} else {alert("Selesai"); end = new Date().getTime();totalWaktu = (end - start) / 1000 ; document.getElementById("waktu").innerHTML = totalWaktu + "s" ;aturTopscorer();}}
+
+   function Jeda () {document.getElementById("logo").style.display = "none";}
+
+
+  function aturTopscorer () { if (localStorage.getItem("topScore") ==null ) {localStorage.setItem("topScore",totalWaktu);document.getElementById("topScore1").innerHTML = totalWaktu + "s";} else if ( totalWaktu < topScore) {localStorage.setItem("topScore",totalWaktu);document.getElementById("topScore").innerHTML = totalWaktu + "s";} else {} }
+
+   
+
+
+
+  
+
+
+
+
+
+   </script>
+</body>
+</html>
