@@ -723,7 +723,8 @@
        SECTION GTA 6
   ======================== -->
   <section id="gta6" class="section">
-    <h2 class="section-title">GTA 6 — Rilis?</h2>
+    <h2 class="section-title" id="judul-gta6">GTA 6 — Rilis?</h2>
+<button class="btn-primary" id="btn-jawaban" style="margin-top:1rem;">Jawaban</button>
     <p style="color: var(--abu); margin-top: 0.5rem;">Klik gambar untuk promo discount di STEAM!</p>
 
     <div class="gta6-wrapper">
@@ -940,6 +941,9 @@
       // Scroll ke form password secara otomatis
       pesan.scrollIntoView({ behavior: "smooth", block: "center" });
     };
+    document.getElementById("btn-jawaban").onclick = function () {
+  document.getElementById("judul-gta6").innerHTML = "Ntalah, cuman Tuhan yang tau 😂";
+};
 
     // Submit password
     document.getElementById("btn-password").onclick = function () {
