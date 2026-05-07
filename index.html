@@ -1039,9 +1039,15 @@
       if (!gameAktif) return; // abaikan kalau game belum mulai
 
       skor++;
-      document.getElementById("skor").innerHTML = skor;
+      document.getElementById("logo-game").src = "tidak rilis rilis.png";
       pindahkanLogo(); // pindah logo ke tempat baru setelah diklik
     };
+
+     setTimeout(function () {
+    document.getElementById("logo-game").src = "rockstar-game-logo.png";
+    pindahkanLogo();
+  }, 400);
+};
 
   </script>
 </body>
