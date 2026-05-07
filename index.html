@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rockstar Fan — Mustofa</title>
+
+  <!-- ========================
+       GOOGLE FONTS
+       Bebas Neue = judul besar (bold, keren)
+       Oswald = sub-judul
+       Barlow = teks biasa
+  ======================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========================
+       CSS VARIABLES (warna tema)
+       Pakai variabel supaya gampang ganti warna di seluruh halaman
+    ======================== */
+    :root {
+      --hitam: #0a0a0a;
+      --hitam2: #111111;
+      --hitam3: #1a1a1a;
+      --merah: #e63946;
+      --merah-gelap: #b5000f;
+      --emas: #f4c430;
+      --emas-muda: #ffd966;
+      --putih: #f0f0f0;
+      --abu: #888888;
+    }
+
+    /* ========================
+       RESET & BASE STYLE
+       Menghapus margin/padding default browser
+    ======================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box; /* padding tidak menambah ukuran elemen */
+    }
+
+    html {
+      scroll-behavior: smooth; /* animasi scroll halus saat klik navbar */
+    }
+
+    body {
+      background-color: var(--hitam);
+      color: var(--putih);
+      font-family: 'Barlow', sans-serif;
+      /* Pola noise gelap sebagai texture background */
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(230, 57, 70, 0.05) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(244, 196, 48, 0.04) 0%, transparent 50%);
+    }
+
+    /* ========================
+       NAVBAR
+       sticky = tetap di atas saat scroll
+    ======================== */
+    nav {
+      position: sticky; /* menempel di atas saat scroll */
+      top: 0;
+      z-index: 1000; /* di atas semua elemen lain */
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px); /* efek blur kaca */
+      border-bottom: 1px solid rgba(244, 196, 48, 0.2);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--emas);
+      letter-spacing: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none; /* hapus bullet list */
+    }
+
+    .nav-links a {
+      color: var(--abu);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.3s; /* animasi perubahan warna */
+    }
+
+    /* Hover effect pada link navbar */
+    .nav-links a:hover {
+      color: var(--emas);
+    }
+
+    /* ========================
+       HERO SECTION (Section pertama)
+    ======================== */
+    #hero {
+      min-height: 90vh; /* tinggi minimal 90% layar */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Garis dekoratif di belakang hero */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      border: 1px solid rgba(244, 196, 48, 0.05);
+      border-radius: 50%;
+      pointer-events: none; /* tidak mengganggu klik */
+    }
+
+    .hero-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 6px;
+      color: var(--merah);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      /* Animasi muncul dari bawah */
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 10vw, 7rem); /* ukuran responsif */
+      line-height: 0.9;
+      letter-spacing: 4px;
+      color: var(--putih);
+      animation: fadeUp 0.8s 0.1s ease both; /* delay 0.1s */
+    }
+
+    /* Teks berwarna emas di dalam judul */
+    .hero-title span {
+      color: var(--emas);
+    }
+
+    /* ========================
+       ANIMASI KEYFRAMES
+       fadeUp = muncul dari bawah ke atas
+    ======================== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ========================
+       SECTION WRAPPER
+       Pembungkus umum untuk semua section
+    ======================== */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto; /* tengahkan */
+    }
+
+    /* Judul tiap section */
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      letter-spacing: 3px;
+      color: var(--putih);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Garis aksen bawah judul */
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--merah);
+      margin-top: 0.5rem;
+    }
+
+    /* ========================
+       GAMBAR PS5
+    ======================== */
+    .ps5-container {
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    /* Gambar PS5 dengan efek glow */
+    #ps5-img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      transition: all 0.5s ease; /* animasi smooth saat ganti gambar */
+      filter: drop-shadow(0 0 30px rgba(230, 57, 70, 0.3));
+    }
+
+    /* Tombol pilihan warna PS5 */
+    .color-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+      flex-wrap: wrap; /* turun ke baris baru di HP kecil */
+    }
+
+    .color-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    /* Efek ring saat hover */
+    .color-btn:hover {
+      transform: scale(1.15);
+      border-color: var(--emas);
+    }
+
+    /* Kelas aktif saat warna dipilih */
+    .color-btn.aktif {
+      border-color: var(--emas);
+      box-shadow: 0 0 15px rgba(244, 196, 48, 0.5);
+    }
+
+    #btn-merah { background: #cc0000; }
+    #btn-biru  { background: #003087; }
+    #btn-putih { background: #e8e8e8; }
+
+    /* Label nama warna di bawah tombol */
+    .color-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--abu);
+      text-align: center;
+      margin-top: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    /* ========================
+       DIVIDER (pemisah section)
+    ======================== */
+    .divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(244, 196, 48, 0.3), transparent);
+      margin: 0;
+    }
+
+    /* ========================
+       FORM TEBAK GAME
+    ======================== */
+    .form-group {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Style input teks */
+    .input-field {
+      flex: 1;
+      min-width: 200px;
+      background: var(--hitam3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      color: var(--putih);
+      padding: 0.9rem 1.2rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    /* Border berubah saat diklik/focus */
+    .input-field:focus {
+      border-color: var(--emas);
+    }
+
+    /* Style tombol utama */
+    .btn-primary {
+      background: var(--merah);
+      color: white;
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    /* Hover effect pada tombol */
+    .btn-primary:hover {
+      background: var(--merah-gelap);
+      transform: translateY(-2px); /* naik sedikit */
+      box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
+    }
+
+    /* Kotak hasil jawaban */
+    .result-box {
+      margin-top: 1rem;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      display: none; /* tersembunyi dulu, muncul lewat JS */
+      animation: fadeUp 0.4s ease;
+    }
+
+    /* Warna kotak kalau benar */
+    .result-box.benar {
+      background: rgba(0, 200, 100, 0.15);
+      border: 1px solid rgba(0, 200, 100, 0.3);
+      color: #00c864;
+    }
+
+    /* Warna kotak kalau salah */
+    .result-box.salah {
+      background: rgba(230, 57, 70, 0.15);
+      border: 1px solid rgba(230, 57, 70, 0.3);
+      color: var(--merah);
+    }
+
+    /* ========================
+       SECTION GTA 6
+    ======================== */
+    .gta6-wrapper {
+      margin-top: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Gambar GTA 6 */
+    #gta6-img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 20px rgba(230, 57, 70, 0.2));
+    }
+
+    /* Hover effect gambar GTA6 */
+    #gta6-img:hover {
+      transform: scale(1.03);
+      filter: drop-shadow(0 0 30px rgba(230, 57, 70, 0.5));
+    }
+
+    /* Pesan muncul setelah gambar diklik */
+    #gta6-pesan {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: var(--hitam3);
+      border: 1px solid rgba(244, 196, 48, 0.3);
+      border-radius: 10px;
+      animation: fadeUp 0.5s ease;
+    }
+
+    /* ========================
+       PASSWORD SECTION
+    ======================== */
+    .password-hint {
+      font-style: italic;
+      color: var(--emas);
+      font-size: 0.9rem;
+      margin: 0.5rem 0 1rem;
+      letter-spacing: 1px;
+    }
+
+    /* Input password */
+    .input-password {
+      background: var(--hitam3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      color: var(--putih);
+      padding: 0.9rem 1.2rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 1rem;
+      outline: none;
+      width: 250px;
+      margin-right: 0.5rem;
+      transition: border-color 0.3s;
+    }
+
+    .input-password:focus {
+      border-color: var(--emas);
+    }
+
+    /* ========================
+       MODAL / POPUP
+    ======================== */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      inset: 0; /* shorthand untuk top:0, right:0, bottom:0, left:0 */
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(5px);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Kotak isi modal */
+    .modal-box {
+      background: var(--hitam3);
+      border: 1px solid rgba(244, 196, 48, 0.3);
+      width: 90%;
+      max-width: 380px;
+      padding: 2.5rem;
+      border-radius: 16px;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    .modal-text {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: var(--putih);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Tombol tutup modal */
+    .btn-tutup {
+      background: transparent;
+      border: 1px solid var(--emas);
+      color: var(--emas);
+      padding: 0.7rem 2rem;
+      border-radius: 6px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+
+    .btn-tutup:hover {
+      background: var(--emas);
+      color: var(--hitam);
+    }
+
+    /* ========================
+       MINI GAME SECTION
+    ======================== */
+    #game {
+      text-align: center;
+    }
+
+    /* Bar info game: skor dan timer */
+    .game-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    /* Kotak angka statistik */
+    .stat-box {
+      text-align: center;
+    }
+
+    .stat-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      color: var(--abu);
+      text-transform: uppercase;
+    }
+
+    .stat-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--emas);
+      line-height: 1;
+    }
+
+    /* Area bermain game */
+    .game-area {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      height: 350px;
+      margin: 0 auto;
+      background: var(--hitam3);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    /* Logo rockstar yang bisa diklik */
+    #logo-game {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      cursor: pointer;
+      transition: transform 0.1s;
+      /* gambar tersembunyi dulu sebelum game dimulai */
+      display: none;
+    }
+
+    /* Sedikit mengecil saat diklik */
+    #logo-game:active {
+      transform: scale(0.9);
+    }
+
+    /* Tombol mulai game */
+    .btn-start {
+      background: linear-gradient(135deg, var(--emas), var(--emas-muda));
+      color: var(--hitam);
+      border: none;
+      padding: 1rem 3rem;
+      border-radius: 8px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 1.5rem;
+    }
+
+    .btn-start:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(244, 196, 48, 0.4);
+    }
+
+    /* Teks instruksi game */
+    .game-instruction {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Oswald', sans-serif;
+      color: var(--abu);
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    /* ========================
+       FOOTER
+    ======================== */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: var(--abu);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      font-family: 'Oswald', sans-serif;
+    }
+
+    footer span {
+      color: var(--merah);
+    }
+
+    /* ========================
+       CONFETTI ANIMATION
+    ======================== */
+    .confetti-piece {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      top: -10px;
+      border-radius: 2px;
+      animation: confettiFall linear forwards;
+      z-index: 9998;
+      pointer-events: none;
+    }
+
+    @keyframes confettiFall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* ========================
+       RESPONSIVE — MOBILE
+       Aturan CSS khusus layar kecil (max 600px)
+    ======================== */
+    @media (max-width: 600px) {
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .nav-links a {
+        font-size: 0.7rem;
+      }
+
+      .game-area {
+        height: 280px;
+      }
+
+      .form-group {
+        flex-direction: column; /* tombol ke bawah di HP */
+      }
+
+      .btn-primary {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================
+       NAVBAR
+  ======================== -->
+  <nav>
+    <div class="nav-logo">ROCKSTAR FAN</div>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#playstation">PS5</a></li>
+      <li><a href="#tebak">Tebak</a></li>
+      <li><a href="#gta6">GTA 6</a></li>
+      <li><a href="#game">Game</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ========================
+       HERO SECTION
+  ======================== -->
+  <section id="hero">
+    <p class="hero-label">⭐ Fan Page Resmi</p>
+    <h1 class="hero-title">PECINTA<br><span>ROCKSTAR</span><br>GAMES</h1>
+  </section>
+
+  <hr class="divider">
+
+
+  <!-- ========================
+       SECTION PS5 — PILIH WARNA
+  ======================== -->
+  <section id="playstation" class="section">
+    <h2 class="section-title">Pilih Warna PS5</h2>
+    <p style="color: var(--abu); margin-top: 0.5rem;">Klik warna favoritmu</p>
+
+    <div class="ps5-container">
+      <!-- Gambar PS5, src diganti via JS saat tombol diklik -->
+      <img id="ps5-img" src="PS-5-MERAH1.png" alt="PlayStation 5">
+
+      <!-- Tombol warna -->
+      <div class="color-buttons">
+        <div>
+          <button class="color-btn aktif" id="btn-merah" title="Merah"></button>
+          <p class="color-label">Merah</p>
+        </div>
+        <div>
+          <button class="color-btn" id="btn-biru" title="Biru"></button>
+          <p class="color-label">Biru</p>
+        </div>
+        <div>
+          <button class="color-btn" id="btn-putih" title="Putih"></button>
+          <p class="color-label">Putih</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+
+  <!-- ========================
+       SECTION TEBAK GAME
+  ======================== -->
+  <section id="tebak" class="section">
+    <h2 class="section-title">Tebak Game</h2>
+    <p style="color: var(--abu); margin-top: 0.5rem;">Apa game Rockstar favoritmu?</p>
+
+    <div class="form-group">
+      <input type="text" id="input-game" class="input-field" placeholder="Ketik nama game...">
+      <button class="btn-primary" id="btn-tebak">Submit</button>
+    </div>
+
+    <!-- Kotak hasil, muncul setelah submit -->
+    <div id="hasil-tebak" class="result-box"></div>
+  </section>
+
+  <hr class="divider">
+
+
+  <!-- ========================
+       SECTION GTA 6
+  ======================== -->
+  <section id="gta6" class="section">
+    <h2 class="section-title">GTA 6 — Rilis?</h2>
+    <p style="color: var(--abu); margin-top: 0.5rem;">Klik gambar untuk promo discount di STEAM!</p>
+
+    <div class="gta6-wrapper">
+      <img id="gta6-img" src="gta 6.png" alt="GTA 6">
+    </div>
+
+    <!-- Pesan muncul setelah gambar diklik -->
+    <div id="gta6-pesan">
+      <p style="font-family:'Oswald',sans-serif; color:var(--emas); font-size:1.1rem; margin-bottom:1rem;">
+        Error! Masukkan password untuk claim discount:
+      </p>
+      <p class="password-hint">Hint: kode = R0ckstar66721</p>
+      <input type="password" id="input-password" class="input-password" placeholder="Masukkan kode...">
+      <button class="btn-primary" id="btn-password">Klaim</button>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+
+  <!-- ========================
+       MINI GAME SECTION
+  ======================== -->
+  <section id="game" class="section">
+    <h2 class="section-title">Mini Game</h2>
+    <p style="color:var(--abu); margin-top:0.5rem;">Klik logo Rockstar secepat mungkin!</p>
+
+    <!-- Statistik: skor dan timer -->
+    <div class="game-stats">
+      <div class="stat-box">
+        <div class="stat-label">Skor</div>
+        <div class="stat-value" id="skor">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Waktu</div>
+        <div class="stat-value" id="timer">15</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Top Score</div>
+        <div class="stat-value" id="top-score">—</div>
+      </div>
+    </div>
+
+    <!-- Area bermain -->
+    <div class="game-area">
+      <p class="game-instruction" id="game-instruction">Tekan START untuk mulai</p>
+      <img id="logo-game" src="rockstar game logo.png" alt="Logo Rockstar">
+    </div>
+
+    <!-- Tombol start -->
+    <button class="btn-start" id="btn-start">START GAME</button>
+  </section>
+
+
+  <!-- ========================
+       MODAL POPUP
+  ======================== -->
+  <div id="modal" class="modal-bg">
+    <div class="modal-box">
+      <p class="modal-text" id="modal-text"></p>
+      <button class="btn-tutup" id="btn-tutup">Tutup</button>
+    </div>
+  </div>
+
+
+  <!-- ========================
+       FOOTER
+  ======================== -->
+  <footer>
+    <p>Dibuat dengan <span>♥</span> oleh Mustofa · 2026</p>
+  </footer>
+
+
+  <!-- ========================
+       JAVASCRIPT
+       Semua logika interaktif website
+  ======================== -->
+  <script>
+
+    // ========================
+    // HELPER: Tampilkan modal popup
+    // ========================
+    function tampilkanModal(pesan) {
+      document.getElementById("modal-text").innerHTML = pesan;
+      document.getElementById("modal").style.display = "block";
+    }
+
+    // Tombol tutup modal
+    document.getElementById("btn-tutup").onclick = function () {
+      document.getElementById("modal").style.display = "none";
+    };
+
+    // Klik di luar modal juga menutup
+    document.getElementById("modal").onclick = function (e) {
+      if (e.target === this) this.style.display = "none";
+    };
+
+
+    // ========================
+    // HELPER: Confetti effect
+    // Membuat partikel warna-warni jatuh dari atas
+    // ========================
+    function buatConfetti() {
+      var warna = ["#e63946", "#f4c430", "#ffffff", "#ffd966", "#00c864"];
+
+      for (var i = 0; i < 60; i++) {
+        // Buat setiap partikel confetti
+        (function(index) {
+          setTimeout(function() {
+            var confetti = document.createElement("div");
+            confetti.classList.add("confetti-piece");
+
+            // Posisi horizontal acak
+            confetti.style.left = Math.random() * 100 + "vw";
+
+            // Warna acak dari array warna
+            confetti.style.background = warna[Math.floor(Math.random() * warna.length)];
+
+            // Durasi jatuh acak antara 1.5 - 3.5 detik
+            confetti.style.animationDuration = (Math.random() * 2 + 1.5) + "s";
+
+            // Ukuran acak
+            var ukuran = Math.random() * 8 + 5;
+            confetti.style.width  = ukuran + "px";
+            confetti.style.height = ukuran + "px";
+
+            document.body.appendChild(confetti);
+
+            // Hapus elemen setelah animasi selesai agar tidak menumpuk
+            setTimeout(function() { confetti.remove(); }, 3500);
+          }, index * 40); // tiap partikel muncul selisih 40ms
+        })(i);
+      }
+    }
+
+
+    // ========================
+    // FITUR 1: PILIH WARNA PS5
+    // ========================
+
+    // Data mapping: id tombol → file gambar
+    var warnaPilihan = {
+      "btn-merah": "PS-5-MERAH1.png",
+      "btn-biru":  "PS-5-BIRU1.png",
+      "btn-putih": "ps-5-putih.webp"
+    };
+
+    // Loop semua tombol warna
+    Object.keys(warnaPilihan).forEach(function(idBtn) {
+      document.getElementById(idBtn).onclick = function () {
+        // Ganti gambar PS5
+        document.getElementById("ps5-img").src = warnaPilihan[idBtn];
+
+        // Hapus kelas 'aktif' dari semua tombol dulu
+        document.querySelectorAll(".color-btn").forEach(function(b) {
+          b.classList.remove("aktif");
+        });
+
+        // Tambah kelas 'aktif' ke tombol yang diklik
+        this.classList.add("aktif");
+      };
+    });
+
+
+    // ========================
+    // FITUR 2: TEBAK GAME
+    // ========================
+    document.getElementById("btn-tebak").onclick = function () {
+      // Ambil teks input, bersihkan spasi, ubah ke huruf kecil
+      var input   = document.getElementById("input-game").value.trim().toLowerCase();
+      var hasil   = document.getElementById("hasil-tebak");
+
+      // Validasi: jangan kosong
+      if (!input) {
+        hasil.className = "result-box salah";
+        hasil.style.display = "block";
+        hasil.innerHTML = "⚠️ Masukkan nama game dulu dong!";
+        return; // berhenti di sini
+      }
+
+      // Daftar jawaban yang dianggap "benar"
+      var jawabanBenar = ["gta 5", "gta v", "grand theft auto v"];
+      var jawabanOke   = ["bully", "red dead", "rdr2", "max payne", "gta 4", "gta iv"];
+
+      if (jawabanBenar.includes(input)) {
+        // Jawaban sempurna
+        hasil.className = "result-box benar";
+        hasil.innerHTML = "🎯 Selera kamu bagus banget! GTA V emang masterpiece!";
+        buatConfetti(); // munculkan confetti!
+
+      } else if (jawabanOke.some(function(j) { return input.includes(j); })) {
+        // Jawaban yang masih oke
+        hasil.className = "result-box benar";
+        hasil.innerHTML = "👍 Pilihan yang bagus! Tapi GTA V tetap raja Rockstar.";
+
+      } else {
+        // Jawaban tidak dikenal
+        hasil.className = "result-box salah";
+        hasil.innerHTML = "❌ \"" + document.getElementById("input-game").value + "\" kurang nendang. Coba lagi!";
+      }
+
+      hasil.style.display = "block"; // tampilkan kotak hasil
+    };
+
+
+    // ========================
+    // FITUR 3: GTA 6 KLIK + PASSWORD
+    // ========================
+
+    // Klik gambar GTA6 → tampilkan form password
+    document.getElementById("gta6-img").onclick = function () {
+      var pesan = document.getElementById("gta6-pesan");
+      pesan.style.display = "block";
+      // Scroll ke form password secara otomatis
+      pesan.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+
+    // Submit password
+    document.getElementById("btn-password").onclick = function () {
+      var input     = document.getElementById("input-password").value;
+      var kodeBenar = "R0ckstar66721";
+
+      if (input === kodeBenar) {
+        tampilkanModal("😂 Waduh, niat banget nyari gratisan! Sama kayak Rockstar — tukang PHP!");
+      } else {
+        tampilkanModal("❌ Kode salah! Udah gratisan, masih salah tulis pula...");
+      }
+    };
+
+
+    // ========================
+    // FITUR 4: MINI GAME
+    // Klik logo Rockstar dalam 15 detik sebanyak mungkin
+    // ========================
+
+    var skor       = 0;      // skor sekarang
+    var waktuSisa  = 15;     // countdown 15 detik
+    var gameAktif  = false;  // status: apakah game sedang berjalan?
+    var intervalId = null;   // menyimpan ID interval timer
+
+    // Tampilkan top score dari localStorage (ingatan browser)
+    var simpanTopScore = localStorage.getItem("topScore-rockstar");
+    if (simpanTopScore) {
+      document.getElementById("top-score").innerHTML = simpanTopScore;
+    }
+
+    // Fungsi: pindahkan logo ke posisi acak dalam area game
+    function pindahkanLogo() {
+      var area  = document.querySelector(".game-area");
+      var logo  = document.getElementById("logo-game");
+
+      // Hitung batas posisi supaya logo tidak keluar area
+      var maxX  = area.offsetWidth  - 100; // 100 = lebar logo
+      var maxY  = area.offsetHeight - 100; // 100 = tinggi logo
+
+      // Posisi acak
+      var randomX = Math.floor(Math.random() * maxX);
+      var randomY = Math.floor(Math.random() * maxY);
+
+      logo.style.left = randomX + "px";
+      logo.style.top  = randomY + "px";
+    }
+
+    // Tombol START — mulai game
+    document.getElementById("btn-start").onclick = function () {
+      if (gameAktif) return; // cegah double klik start
+
+      // Reset nilai awal
+      skor      = 0;
+      waktuSisa = 15;
+      gameAktif = true;
+
+      document.getElementById("skor").innerHTML  = skor;
+      document.getElementById("timer").innerHTML = waktuSisa;
+      document.getElementById("btn-start").disabled = true; // nonaktifkan tombol start
+      document.getElementById("game-instruction").style.display = "none";
+
+      // Tampilkan dan taruh logo di posisi awal
+      var logo = document.getElementById("logo-game");
+      logo.style.display = "block";
+      pindahkanLogo();
+
+      // Mulai countdown timer setiap 1 detik
+      intervalId = setInterval(function () {
+        waktuSisa--;
+        document.getElementById("timer").innerHTML = waktuSisa;
+
+        if (waktuSisa <= 0) {
+          // Waktu habis — akhiri game
+          clearInterval(intervalId); // hentikan timer
+          gameAktif = false;
+          logo.style.display = "none";
+          document.getElementById("btn-start").disabled = false;
+          document.getElementById("game-instruction").style.display = "block";
+          document.getElementById("game-instruction").innerHTML = "Waktu habis! Klik START lagi.";
+
+          // Cek apakah skor baru adalah top score
+          var skorLama = localStorage.getItem("topScore-rockstar");
+          if (!skorLama || skor > parseInt(skorLama)) {
+            localStorage.setItem("topScore-rockstar", skor); // simpan top score baru
+            document.getElementById("top-score").innerHTML = skor;
+            tampilkanModal("🏆 NEW RECORD! Skor kamu: " + skor + " klik! Luar biasa!");
+            buatConfetti();
+          } else {
+            tampilkanModal("Game selesai! Skor kamu: " + skor + " klik. Top score: " + skorLama);
+          }
+        }
+      }, 1000); // 1000ms = 1 detik
+    };
+
+    // Klik logo saat game berjalan = tambah skor
+    document.getElementById("logo-game").onclick = function () {
+      if (!gameAktif) return; // abaikan kalau game belum mulai
+
+      skor++;
+      document.getElementById("skor").innerHTML = skor;
+      pindahkanLogo(); // pindah logo ke tempat baru setelah diklik
+    };
+
+  </script>
+</body>
+</html>
