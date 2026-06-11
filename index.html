@@ -2302,6 +2302,7 @@
     var waktuSisa = 15;
     var gameAktif = false;
     var intervalId = null;
+    var clickTimeoutId = null;
 
     // Load top score
     var simpanTopScore = localStorage.getItem('topScore-rockstar');
@@ -2347,9 +2348,17 @@
       document.getElementById('game-instruction').style.display = 'none';
       document.getElementById('game-area').classList.add('active');
 
+      // Bersihkan timeout dari game sebelumnya
+      if (clickTimeoutId) {
+        clearTimeout(clickTimeoutId);
+        clickTimeoutId = null;
+      }
+
       var logo = document.getElementById('logo-game');
+      // Set src DULU sebelum display:block agar tidak flash gambar lama
+      logo.src = 'rockstar-game-logo.png';
+      logo.style.transform = 'scale(1) rotate(0deg)';
       logo.style.display = 'block';
-      logo.src = 'rockstar game logo.png';
       pindahkanLogo();
 
       intervalId = setInterval(function() {
@@ -2365,6 +2374,16 @@
         if (waktuSisa <= 0) {
           clearInterval(intervalId);
           gameAktif = false;
+
+          // Bersihkan timeout dari klik terakhir
+          if (clickTimeoutId) {
+            clearTimeout(clickTimeoutId);
+            clickTimeoutId = null;
+          }
+
+          // Reset logo ke state bersih sebelum disembunyikan
+          logo.src = 'rockstar-game-logo.png';
+          logo.style.transform = 'scale(1) rotate(0deg)';
           logo.style.display = 'none';
           document.getElementById('btn-start').disabled = false;
           document.getElementById('game-area').classList.remove('active');
@@ -2402,10 +2421,13 @@
       this.style.transform = 'scale(1.2) rotate(10deg)';
 
       var self = this;
-      setTimeout(function() {
-        self.src = 'rockstar-game-logo.png';
-        self.style.transform = 'scale(1) rotate(0deg)';
-        pindahkanLogo();
+      clickTimeoutId = setTimeout(function() {
+        if (gameAktif) {
+          self.src = 'rockstar-game-logo.png';
+          self.style.transform = 'scale(1) rotate(0deg)';
+          pindahkanLogo();
+        }
+        clickTimeoutId = null;
       }, 300);
     };
 
