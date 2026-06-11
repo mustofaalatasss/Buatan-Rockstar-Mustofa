@@ -100,6 +100,26 @@
       pointer-events: none;
     }
 
+    .loader-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.45; /* Disesuaikan agar teks tetap terbaca jelas */
+      pointer-events: none;
+    }
+
+    .loader-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     .loader-logo {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 3rem;
@@ -1616,9 +1636,14 @@
        LOADING SCREEN
   ======================== -->
   <div class="loader-screen" id="loader-screen">
-    <div class="loader-logo">ROCKSTAR FAN</div>
-    <div class="loader-bar-track">
-      <div class="loader-bar-fill" id="loader-bar"></div>
+    <video autoplay muted loop playsinline class="loader-video">
+      <source src="Loading Screen Gta 6 (1).mp4" type="video/mp4">
+    </video>
+    <div class="loader-content">
+      <div class="loader-logo">ROCKSTAR FAN</div>
+      <div class="loader-bar-track">
+        <div class="loader-bar-fill" id="loader-bar"></div>
+      </div>
     </div>
   </div>
 
@@ -1879,25 +1904,26 @@
       var bar = document.getElementById('loader-bar');
       var progress = 0;
 
+      // Loading duration is extended to approx 5 seconds to let the video play
       var interval = setInterval(function() {
-        progress += Math.random() * 25 + 10;
+        progress += Math.random() * 3 + 1.5; // Slower increment
         if (progress >= 100) {
           progress = 100;
           bar.style.width = '100%';
           clearInterval(interval);
           setTimeout(function() {
             loader.classList.add('hidden');
-          }, 400);
+          }, 200); // Tunggu sebentar setelah 100% sebelum hilang
         } else {
           bar.style.width = progress + '%';
         }
-      }, 200);
+      }, 100);
 
-      // Fallback: force hide after 3 seconds
+      // Fallback: force hide after 5.2 seconds
       setTimeout(function() {
         loader.classList.add('hidden');
         clearInterval(interval);
-      }, 3000);
+      }, 5200);
     })();
 
 
