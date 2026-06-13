@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rockstar Fan — Mustofa</title>
-  <meta name="description" content="Halaman fan premium Rockstar Games oleh Mustofa. PS5 showcase, mini game, dan banyak lagi.">
+  <meta name="description"
+    content="Halaman fan premium Rockstar Games oleh Mustofa. PS5 showcase, mini game, dan banyak lagi.">
   <link rel="icon" href="favicon.ico">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Barlow:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Barlow:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <style>
     /* ============================================
@@ -52,7 +59,9 @@
     /* ============================================
        RESET & BASE
     ============================================ */
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -64,8 +73,14 @@
       scrollbar-color: var(--gold) var(--bg-secondary);
     }
 
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
     ::-webkit-scrollbar-thumb {
       background: linear-gradient(180deg, var(--gold), var(--red-neon));
       border-radius: 10px;
@@ -108,7 +123,8 @@
       height: 100%;
       object-fit: cover;
       z-index: -1;
-      opacity: 0.45; /* Disesuaikan agar teks tetap terbaca jelas */
+      opacity: 0.45;
+      /* Disesuaikan agar teks tetap terbaca jelas */
       pointer-events: none;
     }
 
@@ -147,8 +163,17 @@
     }
 
     @keyframes loaderPulse {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.04); }
+
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.04);
+      }
     }
 
     /* ============================================
@@ -318,9 +343,17 @@
       transition: all 0.3s ease;
     }
 
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
 
     /* ============================================
        ANIMATED BACKGROUND SHAPES
@@ -342,31 +375,50 @@
     }
 
     .bg-orb:nth-child(1) {
-      width: 600px; height: 600px;
+      width: 600px;
+      height: 600px;
       background: var(--red-neon);
-      top: -10%; left: -10%;
+      top: -10%;
+      left: -10%;
       animation-delay: 0s;
     }
 
     .bg-orb:nth-child(2) {
-      width: 500px; height: 500px;
+      width: 500px;
+      height: 500px;
       background: var(--gold);
-      bottom: -10%; right: -10%;
+      bottom: -10%;
+      right: -10%;
       animation-delay: -7s;
     }
 
     .bg-orb:nth-child(3) {
-      width: 400px; height: 400px;
+      width: 400px;
+      height: 400px;
       background: var(--accent-purple);
-      top: 50%; left: 50%;
+      top: 50%;
+      left: 50%;
       animation-delay: -14s;
     }
 
     @keyframes orbFloat {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25% { transform: translate(50px, -30px) scale(1.1); }
-      50% { transform: translate(-30px, 50px) scale(0.95); }
-      75% { transform: translate(40px, 40px) scale(1.05); }
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      25% {
+        transform: translate(50px, -30px) scale(1.1);
+      }
+
+      50% {
+        transform: translate(-30px, 50px) scale(0.95);
+      }
+
+      75% {
+        transform: translate(40px, 40px) scale(1.05);
+      }
     }
 
     /* ============================================
@@ -417,17 +469,41 @@
     }
 
     /* Stagger children */
-    .stagger-children > * {
+    .stagger-children>* {
       opacity: 0;
       transform: translateY(30px);
       transition: all 0.6s var(--transition-smooth);
     }
 
-    .stagger-children.visible > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
-    .stagger-children.visible > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
-    .stagger-children.visible > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-    .stagger-children.visible > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
-    .stagger-children.visible > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+    .stagger-children.visible>*:nth-child(1) {
+      transition-delay: 0.1s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-children.visible>*:nth-child(2) {
+      transition-delay: 0.2s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-children.visible>*:nth-child(3) {
+      transition-delay: 0.3s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-children.visible>*:nth-child(4) {
+      transition-delay: 0.4s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-children.visible>*:nth-child(5) {
+      transition-delay: 0.5s;
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* ============================================
        HERO SECTION — CINEMATIC
@@ -460,8 +536,13 @@
     }
 
     @keyframes heroRays {
-      from { transform: translateX(-50%) rotate(0deg); }
-      to { transform: translateX(-50%) rotate(360deg); }
+      from {
+        transform: translateX(-50%) rotate(0deg);
+      }
+
+      to {
+        transform: translateX(-50%) rotate(360deg);
+      }
     }
 
     .hero-badge {
@@ -492,8 +573,17 @@
     }
 
     @keyframes badgePulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.7); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(0.7);
+      }
     }
 
     .hero-title-wrapper {
@@ -524,11 +614,19 @@
     }
 
     @keyframes goldShimmer {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 200% 50%; }
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 200% 50%;
+      }
     }
 
-    .glitch::before, .glitch::after {
+    .glitch::before,
+    .glitch::after {
       content: attr(data-text);
       position: absolute;
       top: 0;
@@ -560,23 +658,59 @@
     }
 
     @keyframes glitch-anim {
-      0% { clip: rect(10px, 9999px, 31px, 0); }
-      5% { clip: rect(70px, 9999px, 15px, 0); }
-      10% { clip: rect(20px, 9999px, 80px, 0); }
-      15% { clip: rect(90px, 9999px, 50px, 0); }
-      20% { clip: rect(30px, 9999px, 10px, 0); }
-      25% { clip: rect(10px, 9999px, 31px, 0); }
-      100% { clip: rect(10px, 9999px, 31px, 0); }
+      0% {
+        clip: rect(10px, 9999px, 31px, 0);
+      }
+
+      5% {
+        clip: rect(70px, 9999px, 15px, 0);
+      }
+
+      10% {
+        clip: rect(20px, 9999px, 80px, 0);
+      }
+
+      15% {
+        clip: rect(90px, 9999px, 50px, 0);
+      }
+
+      20% {
+        clip: rect(30px, 9999px, 10px, 0);
+      }
+
+      25% {
+        clip: rect(10px, 9999px, 31px, 0);
+      }
+
+      100% {
+        clip: rect(10px, 9999px, 31px, 0);
+      }
     }
 
     @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes cinematicScale {
-      from { opacity: 0; transform: scale(0.85) translateY(40px); filter: blur(12px); }
-      to { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+      from {
+        opacity: 0;
+        transform: scale(0.85) translateY(40px);
+        filter: blur(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+      }
     }
 
     /* Hero subtitle */
@@ -626,8 +760,17 @@
     }
 
     @keyframes scrollDot {
-      0%, 100% { transform: translateY(0); opacity: 1; }
-      50% { transform: translateY(12px); opacity: 0.2; }
+
+      0%,
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      50% {
+        transform: translateY(12px);
+        opacity: 0.2;
+      }
     }
 
     .scroll-text {
@@ -746,8 +889,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
       background-size: 40px 40px;
       pointer-events: none;
     }
@@ -796,8 +939,15 @@
     }
 
     @keyframes floatMotion {
-      0%, 100% { transform: translateY(0) rotateX(0); }
-      50% { transform: translateY(-15px) rotateX(2deg); }
+
+      0%,
+      100% {
+        transform: translateY(0) rotateX(0);
+      }
+
+      50% {
+        transform: translateY(-15px) rotateX(2deg);
+      }
     }
 
     .ps5-podium {
@@ -815,8 +965,17 @@
     }
 
     @keyframes podiumPulse {
-      0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-      50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+
+      0%,
+      100% {
+        opacity: 0.6;
+        transform: translateX(-50%) scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.1);
+      }
     }
 
     /* Color Picker */
@@ -891,13 +1050,30 @@
     }
 
     @keyframes colorRingPulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.2); opacity: 0; }
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.2);
+        opacity: 0;
+      }
     }
 
-    #btn-merah { background: radial-gradient(circle at 35% 35%, #ff4444, #8b0000); }
-    #btn-biru  { background: radial-gradient(circle at 35% 35%, #4488ff, #001166); }
-    #btn-putih { background: radial-gradient(circle at 35% 35%, #ffffff, #999999); }
+    #btn-merah {
+      background: radial-gradient(circle at 35% 35%, #ff4444, #8b0000);
+    }
+
+    #btn-biru {
+      background: radial-gradient(circle at 35% 35%, #4488ff, #001166);
+    }
+
+    #btn-putih {
+      background: radial-gradient(circle at 35% 35%, #ffffff, #999999);
+    }
 
     .color-label {
       font-family: 'Oswald', sans-serif;
@@ -909,7 +1085,7 @@
     }
 
     .color-btn-wrapper:hover .color-label,
-    .color-btn.aktif ~ .color-label {
+    .color-btn.aktif~.color-label {
       color: var(--gold);
     }
 
@@ -1072,8 +1248,15 @@
     }
 
     @keyframes resultSlideIn {
-      from { opacity: 0; transform: translateY(20px) scale(0.95); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     .result-box.benar {
@@ -1188,8 +1371,13 @@
     }
 
     @keyframes modalFadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
     .modal-box {
@@ -1211,8 +1399,15 @@
     }
 
     @keyframes modalBoxIn {
-      from { opacity: 0; transform: translate(-50%, -50%) scale(0.9) translateY(20px); }
-      to { opacity: 1; transform: translate(-50%, -50%) scale(1) translateY(0); }
+      from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9) translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) translateY(0);
+      }
     }
 
     .modal-text {
@@ -1322,13 +1517,11 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0, 0, 0, 0.03) 2px,
-        rgba(0, 0, 0, 0.03) 4px
-      );
+      background: repeating-linear-gradient(0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 0, 0, 0.03) 2px,
+          rgba(0, 0, 0, 0.03) 4px);
       pointer-events: none;
     }
 
@@ -1441,8 +1634,15 @@
     }
 
     @keyframes heartBeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
     }
 
     .footer-links {
@@ -1479,7 +1679,10 @@
     }
 
     @keyframes confettiFall {
-      0% { opacity: 1; }
+      0% {
+        opacity: 1;
+      }
+
       100% {
         transform: translateY(110vh) rotate(1080deg);
         opacity: 0;
@@ -1499,8 +1702,15 @@
     }
 
     @keyframes rippleExpand {
-      0% { transform: scale(0); opacity: 0.6; }
-      100% { transform: scale(4); opacity: 0; }
+      0% {
+        transform: scale(0);
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: scale(4);
+        opacity: 0;
+      }
     }
 
     /* Number pop animation for game */
@@ -1516,8 +1726,15 @@
     }
 
     @keyframes scorePop {
-      0% { opacity: 1; transform: translateY(0) scale(1); }
-      100% { opacity: 0; transform: translateY(-60px) scale(1.5); }
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-60px) scale(1.5);
+      }
     }
 
     /* ============================================
@@ -1570,7 +1787,8 @@
         font-size: clamp(3rem, 14vw, 6rem);
       }
 
-      .cursor-dot, .cursor-ring {
+      .cursor-dot,
+      .cursor-ring {
         display: none;
       }
     }
@@ -1628,8 +1846,81 @@
         gap: 1rem;
       }
     }
+
+    /* ============================================
+       LOADING SCREEN
+    ============================================ */
+    .loader-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: var(--bg-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .loader-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.45; /* Disesuaikan agar teks tetap terbaca jelas */
+      pointer-events: none;
+    }
+
+    .loader-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .loader-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      letter-spacing: 12px;
+      color: var(--gold);
+      text-shadow: 0 0 40px var(--gold-glow);
+      animation: loaderPulse 1.5s ease-in-out infinite;
+    }
+
+    .loader-bar-track {
+      width: 200px;
+      height: 2px;
+      background: var(--gray-dark);
+      margin-top: 2rem;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .loader-bar-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--red-neon), var(--gold));
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    @keyframes loaderPulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.04); }
+    }
   </style>
 </head>
+
 <body>
 
   <!-- ========================
@@ -1705,7 +1996,8 @@
       <div class="glitch text-emas" data-text="ROCKSTAR">ROCKSTAR</div><br>
       <div class="glitch" data-text="GAMES">GAMES</div>
     </div>
-    <p class="hero-subtitle">Tempat berkumpulnya para pecinta Rockstar Games sejati. Jelajahi, mainkan, dan rasakan pengalaman gaming premium.</p>
+    <p class="hero-subtitle">Tempat berkumpulnya para pecinta Rockstar Games sejati. Jelajahi, mainkan, dan rasakan
+      pengalaman gaming premium.</p>
 
     <div class="hero-scroll-indicator">
       <div class="scroll-mouse">
@@ -1724,7 +2016,8 @@
     <div class="section-header reveal">
       <div class="section-label">Showcase</div>
       <h2 class="section-title">PS5 <span class="highlight">Custom Plates</span></h2>
-      <p class="section-desc">Klik warna favorit untuk mempersonalisasikan konsolmu. Rasakan pengalaman visual premium.</p>
+      <p class="section-desc">Klik warna favorit untuk mempersonalisasikan konsolmu. Rasakan pengalaman visual premium.
+      </p>
     </div>
 
     <div class="ps5-showcase-container reveal-scale">
@@ -1814,7 +2107,8 @@
       </div>
 
       <div id="gta6-pesan">
-        <p style="font-family:'Oswald',sans-serif; color:var(--gold); font-size:1.05rem; margin-bottom:1rem; letter-spacing: 1px;">
+        <p
+          style="font-family:'Oswald',sans-serif; color:var(--gold); font-size:1.05rem; margin-bottom:1rem; letter-spacing: 1px;">
           ⚠️ Error! Masukkan password untuk claim discount:
         </p>
         <p class="password-hint">Hint: kode = R0ckstar66721</p>
@@ -1897,46 +2191,39 @@
   ======================== -->
   <script>
     // ============================================
-    // LOADING SCREEN
+    // LOADER SCREEN
     // ============================================
-    (function() {
-      var loader = document.getElementById('loader-screen');
-      var bar = document.getElementById('loader-bar');
-      var progress = 0;
-
-      // Loading duration is extended to approx 5 seconds to let the video play
-      var interval = setInterval(function() {
-        progress += Math.random() * 3 + 1.5; // Slower increment
-        if (progress >= 100) {
-          progress = 100;
-          bar.style.width = '100%';
+    window.addEventListener('load', function() {
+      const loader = document.getElementById('loader-screen');
+      const bar = document.getElementById('loader-bar');
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += Math.random() * 15;
+        if (progress > 100) progress = 100;
+        if (bar) bar.style.width = progress + '%';
+        if (progress === 100) {
           clearInterval(interval);
-          setTimeout(function() {
-            loader.classList.add('hidden');
-          }, 200); // Tunggu sebentar setelah 100% sebelum hilang
-        } else {
-          bar.style.width = progress + '%';
+          setTimeout(() => {
+            if (loader) {
+              loader.classList.add('hidden');
+              setTimeout(() => { loader.style.display = 'none'; }, 800);
+            }
+          }, 400);
         }
-      }, 100);
-
-      // Fallback: force hide after 5.2 seconds
-      setTimeout(function() {
-        loader.classList.add('hidden');
-        clearInterval(interval);
-      }, 5200);
-    })();
+      }, 200);
+    });
 
 
     // ============================================
     // CUSTOM CURSOR
     // ============================================
-    (function() {
+    (function () {
       var dot = document.getElementById('cursor-dot');
       var ring = document.getElementById('cursor-ring');
       var mouseX = 0, mouseY = 0;
       var ringX = 0, ringY = 0;
 
-      document.addEventListener('mousemove', function(e) {
+      document.addEventListener('mousemove', function (e) {
         mouseX = e.clientX;
         mouseY = e.clientY;
         dot.style.left = mouseX - 4 + 'px';
@@ -1955,9 +2242,9 @@
 
       // Hover effect on interactive elements
       var hoverables = document.querySelectorAll('a, button, .color-btn, #gta6-img, #logo-game, .spec-card');
-      hoverables.forEach(function(el) {
-        el.addEventListener('mouseenter', function() { ring.classList.add('hover'); });
-        el.addEventListener('mouseleave', function() { ring.classList.remove('hover'); });
+      hoverables.forEach(function (el) {
+        el.addEventListener('mouseenter', function () { ring.classList.add('hover'); });
+        el.addEventListener('mouseleave', function () { ring.classList.remove('hover'); });
       });
     })();
 
@@ -1965,20 +2252,20 @@
     // ============================================
     // CLICK RIPPLE EFFECT
     // ============================================
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
       var ripple = document.createElement('div');
       ripple.classList.add('click-ripple');
       ripple.style.left = e.clientX - 10 + 'px';
       ripple.style.top = e.clientY - 10 + 'px';
       document.body.appendChild(ripple);
-      setTimeout(function() { ripple.remove(); }, 600);
+      setTimeout(function () { ripple.remove(); }, 600);
     });
 
 
     // ============================================
     // PARTICLE CANVAS
     // ============================================
-    (function() {
+    (function () {
       var canvas = document.getElementById('particle-canvas');
       var ctx = canvas.getContext('2d');
       var particles = [];
@@ -2007,7 +2294,7 @@
       function drawParticles() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        particles.forEach(function(p) {
+        particles.forEach(function (p) {
           p.x += p.vx;
           p.y += p.vy;
 
@@ -2048,7 +2335,7 @@
     // ============================================
     // SCROLL PROGRESS BAR
     // ============================================
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
       var scrollTop = window.scrollY;
       var docHeight = document.documentElement.scrollHeight - window.innerHeight;
       var progress = (scrollTop / docHeight) * 100;
@@ -2059,12 +2346,12 @@
     // ============================================
     // NAVBAR SCROLL EFFECT + ACTIVE LINK
     // ============================================
-    (function() {
+    (function () {
       var nav = document.getElementById('main-nav');
       var links = document.querySelectorAll('.nav-links a');
       var sections = document.querySelectorAll('section[id]');
 
-      window.addEventListener('scroll', function() {
+      window.addEventListener('scroll', function () {
         // Scroll effect
         if (window.scrollY > 50) {
           nav.classList.add('scrolled');
@@ -2074,9 +2361,9 @@
 
         // Active section tracking
         var scrollPos = window.scrollY + 200;
-        sections.forEach(function(section) {
+        sections.forEach(function (section) {
           if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
-            links.forEach(function(link) { link.classList.remove('active'); });
+            links.forEach(function (link) { link.classList.remove('active'); });
             var activeLink = document.querySelector('.nav-links a[href="#' + section.id + '"]');
             if (activeLink) activeLink.classList.add('active');
           }
@@ -2087,14 +2374,14 @@
       var hamburger = document.getElementById('hamburger');
       var navLinks = document.getElementById('nav-links');
 
-      hamburger.addEventListener('click', function() {
+      hamburger.addEventListener('click', function () {
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('open');
       });
 
       // Close mobile menu on link click
-      links.forEach(function(link) {
-        link.addEventListener('click', function() {
+      links.forEach(function (link) {
+        link.addEventListener('click', function () {
           hamburger.classList.remove('active');
           navLinks.classList.remove('open');
         });
@@ -2105,11 +2392,11 @@
     // ============================================
     // SCROLL REVEAL ANIMATIONS
     // ============================================
-    (function() {
+    (function () {
       var revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children');
 
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
           }
@@ -2119,7 +2406,7 @@
         rootMargin: '0px 0px -50px 0px'
       });
 
-      revealElements.forEach(function(el) {
+      revealElements.forEach(function (el) {
         observer.observe(el);
       });
     })();
@@ -2133,11 +2420,11 @@
       document.getElementById('modal').style.display = 'block';
     }
 
-    document.getElementById('btn-tutup').onclick = function() {
+    document.getElementById('btn-tutup').onclick = function () {
       document.getElementById('modal').style.display = 'none';
     };
 
-    document.getElementById('modal').onclick = function(e) {
+    document.getElementById('modal').onclick = function (e) {
       if (e.target === this) this.style.display = 'none';
     };
 
@@ -2150,8 +2437,8 @@
       var shapes = ['circle', 'square', 'triangle'];
 
       for (var i = 0; i < 80; i++) {
-        (function(index) {
-          setTimeout(function() {
+        (function (index) {
+          setTimeout(function () {
             var confetti = document.createElement('div');
             confetti.classList.add('confetti-piece');
 
@@ -2169,8 +2456,8 @@
             else if (shape === 'triangle') {
               confetti.style.width = '0';
               confetti.style.height = '0';
-              confetti.style.borderLeft = ukuran/2 + 'px solid transparent';
-              confetti.style.borderRight = ukuran/2 + 'px solid transparent';
+              confetti.style.borderLeft = ukuran / 2 + 'px solid transparent';
+              confetti.style.borderRight = ukuran / 2 + 'px solid transparent';
               confetti.style.borderBottom = ukuran + 'px solid ' + warna[Math.floor(Math.random() * warna.length)];
               confetti.style.background = 'transparent';
             }
@@ -2179,7 +2466,7 @@
             confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
 
             document.body.appendChild(confetti);
-            setTimeout(function() { confetti.remove(); }, 4000);
+            setTimeout(function () { confetti.remove(); }, 4000);
           }, index * 30);
         })(i);
       }
@@ -2207,8 +2494,8 @@
       }
     };
 
-    Object.keys(warnaPilihan).forEach(function(idBtn) {
-      document.getElementById(idBtn).onclick = function() {
+    Object.keys(warnaPilihan).forEach(function (idBtn) {
+      document.getElementById(idBtn).onclick = function () {
         var data = warnaPilihan[idBtn];
         var imgElement = document.getElementById('ps5-img');
         var backdropElement = document.getElementById('ps5-glow-backdrop');
@@ -2217,7 +2504,7 @@
         imgElement.style.opacity = '0';
         imgElement.style.transform = 'scale(0.9) translateY(20px)';
 
-        setTimeout(function() {
+        setTimeout(function () {
           imgElement.src = data.src;
           imgElement.style.filter = data.glow;
           backdropElement.style.background = data.backdropGlow;
@@ -2227,7 +2514,7 @@
         }, 300);
 
         // Update active state
-        document.querySelectorAll('.color-btn').forEach(function(b) {
+        document.querySelectorAll('.color-btn').forEach(function (b) {
           b.classList.remove('aktif');
         });
         this.classList.add('aktif');
@@ -2239,9 +2526,9 @@
 
 
     // ============================================
-    // TEBAK GAME — ENHANCED WITH TYPING FEEDBACK
+    // TEBAK GAME — ENHANCED WITH ROCKSTAR DATABASE
     // ============================================
-    document.getElementById('btn-tebak').onclick = function() {
+    document.getElementById('btn-tebak').onclick = function () {
       var input = document.getElementById('input-game').value.trim().toLowerCase();
       var hasil = document.getElementById('hasil-tebak');
 
@@ -2249,36 +2536,78 @@
         hasil.className = 'result-box salah';
         hasil.style.display = 'block';
         hasil.innerHTML = '⚠️ Masukkan nama game dulu dong!';
-        // Shake animation
         hasil.style.animation = 'none';
         hasil.offsetHeight; // trigger reflow
         hasil.style.animation = 'resultSlideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
         return;
       }
 
-      var jawabanBenar = ['gta 5', 'gta v', 'grand theft auto v', 'grand theft auto 5'];
-      var jawabanOke = ['bully', 'red dead', 'rdr2', 'rdr', 'max payne', 'gta 4', 'gta iv', 'gta san andreas', 'gta vice city', 'la noire', 'midnight club'];
+      // Rockstar Games Database
+      var db = [
+        { keys: ['gta iv', 'gta 4', 'grand theft auto iv', 'grand theft auto 4'], feedback: '🏆 Skor Metacritic 98! Peringkat #1 Rockstar. Dipuji karena lompatan mekanik dan fisika realistis petualangan Niko Bellic!' },
+        { keys: ['gta v', 'gta 5', 'grand theft auto v', 'grand theft auto 5'], feedback: '🏆 Skor Metacritic 97! Masterpiece open-world modern yang legendaris!' },
+        { keys: ['red dead redemption 2', 'rdr 2', 'rdr2'], feedback: '🏆 Skor Metacritic 97! Mahakarya fiksi barat terbuka dengan detail luar biasa!' },
+        { keys: ['san andreas', 'gta sa', 'grand theft auto: san andreas'], feedback: '⭐ Skor Metacritic 95! Game klasik yang sangat ikonik, "Ah shit, here we go again."' },
+        { keys: ['gta iii', 'gta 3', 'grand theft auto iii', 'grand theft auto 3'], feedback: '⭐ Skor Metacritic 95! Game yang mempopulerkan genre open-world 3D.' },
+        { keys: ['red dead redemption', 'rdr', 'rdr 1', 'red dead 1'], feedback: '⭐ Skor Metacritic 95! Kisah John Marston yang sangat emosional.' },
+        { keys: ['vice city', 'gta vc', 'grand theft auto: vice city'], feedback: '⭐ Skor Metacritic 94! Vibe 80-an dengan soundtrack yang tak terlupakan!' },
+        { keys: ['chinatown wars', 'gta cw', 'grand theft auto: chinatown wars'], feedback: '⭐ Skor Metacritic 93! Game top-down keren yang dirilis untuk handheld.' },
+        { keys: ['l.a. noire', 'la noire', 'l a noire'], feedback: '⭐ Skor Metacritic 89! Game detektif neo-noir interaktif yang memanfaatkan teknologi pemindaian wajah revolusioner!' },
+        { keys: ['max payne 3'], feedback: '⭐ Skor Metacritic 87! Menghadirkan salah satu mekanisme shooting dengan animasi terbaik.' },
+        { keys: ['bully', 'canis canem edit'], feedback: '⭐ Skor Metacritic 87! Petualangan open-world simulasi kehidupan sekolah berasrama.' },
+        { keys: ['london 1969', 'london 1961', 'gta london'], feedback: '🎮 Ekspansi seri klasik GTA di London.' },
+        { keys: ['gta 2', 'grand theft auto 2'], feedback: '🎮 Era top-down klasik dari franchise GTA.' },
+        { keys: ['gta advance', 'grand theft auto: advance'], feedback: '🎮 Game GTA portabel untuk Game Boy Advance.' },
+        { keys: ['liberty city stories', 'gta lcs'], feedback: '🎮 Prekuel GTA III yang seru di Liberty City.' },
+        { keys: ['vice city stories', 'gta vcs'], feedback: '🎮 Prekuel Vice City dengan cerita yang dalam.' },
+        { keys: ['the lost and damned', 'tlad'], feedback: '🎮 Ekspansi DLC GTA IV tentang geng motor The Lost.' },
+        { keys: ['the ballad of gay tony', 'tbogt'], feedback: '🎮 Ekspansi DLC GTA IV tentang kehidupan malam Liberty City.' },
+        { keys: ['gta online', 'grand theft auto online'], feedback: '🎮 Mode multiplayer GTA V yang sangat populer!' },
+        { keys: ['definitive edition', 'trilogy'], feedback: '🎮 Remaster dari trilogi klasik GTA PS2.' },
+        { keys: ['red dead revolver', 'revolver'], feedback: '🤠 Awal mula seri Red Dead dari game aksi linier!' },
+        { keys: ['undead nightmare'], feedback: '🧟 Ekspansi zombie standalone yang sangat keren untuk RDR1.' },
+        { keys: ['red dead online'], feedback: '🤠 Petualangan multiplayer di dunia luas RDR2.' },
+        { keys: ['max payne 2'], feedback: '🔫 Seri kedua petualangan kelam Max Payne.' },
+        { keys: ['max payne'], feedback: '🔫 Seri Max Payne awal (diporting/diterbitkan oleh Rockstar).' },
+        { keys: ['midnight club'], feedback: '🏎️ Game balap jalanan liar legendaris era PS2.' },
+        { keys: ['manhunt'], feedback: '🔪 Seri stealth-horror psikologis yang sangat kontroversial karena tingkat kekerasannya yang ekstrem.' },
+        { keys: ['smuggler\'s run', 'smugglers run'], feedback: '🚙 Game berkendara menyelundupkan barang melewati batas wilayah.' },
+        { keys: ['thrasher', 'skate and destroy'], feedback: '🛹 Game simulasi skateboard awal dari Rockstar.' },
+        { keys: ['wild metal country'], feedback: '🚜 Game pertempuran kendaraan taktis.' },
+        { keys: ['oni'], feedback: '🤖 Game aksi brawler fiksi ilmiah (Rockstar menangani versi PS2).' },
+        { keys: ['state of emergency'], feedback: '🔥 Game tentang kerusuhan kota berskala besar.' },
+        { keys: ['the warriors'], feedback: '👊 Adaptasi film geng klasik tahun 1979, salah satu game brawler kooperatif terbaik.' },
+        { keys: ['table tennis', 'tenis meja'], feedback: '🏓 Game tenis meja untuk memamerkan kecanggihan RAGE Engine (mesin grafis untuk GTA IV, V, RDR2).' },
+        { keys: ['beaterator'], feedback: '🎶 Game pembuat musik/ritme berkolaborasi dengan Timbaland.' },
+        { keys: ['gta 1', 'grand theft auto 1', 'gta', 'grand theft auto'], feedback: '🎮 Franchise terbesar yang mempopulerkan genre open-world modern.' }
+      ];
 
-      if (jawabanBenar.includes(input)) {
+      var match = null;
+      for (var i = 0; i < db.length; i++) {
+        // Cek apakah input mengandung salah satu keyword di keys
+        if (db[i].keys.some(function(k) { return input === k || input.includes(k); })) {
+          match = db[i].feedback;
+          break;
+        }
+      }
+
+      if (match) {
         hasil.className = 'result-box benar';
-        hasil.innerHTML = '🎯 Selera kamu bagus banget! GTA V emang masterpiece!';
+        hasil.innerHTML = '🎯 <b>Tepat Sekali!</b><br>' + match;
         buatConfetti();
-      } else if (jawabanOke.some(function(j) { return input.includes(j); })) {
-        hasil.className = 'result-box benar';
-        hasil.innerHTML = '👍 Pilihan yang bagus! Tapi GTA V tetap raja Rockstar.';
       } else {
         hasil.className = 'result-box salah';
-        hasil.innerHTML = '❌ "' + document.getElementById('input-game').value + '" kurang nendang. Coba lagi!';
+        hasil.innerHTML = '❌ Game ini di rockstar ga ada';
       }
 
       hasil.style.display = 'block';
       hasil.style.animation = 'none';
-      hasil.offsetHeight;
+      hasil.offsetHeight; // trigger reflow
       hasil.style.animation = 'resultSlideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
     };
 
     // Enter key support
-    document.getElementById('input-game').addEventListener('keypress', function(e) {
+    document.getElementById('input-game').addEventListener('keypress', function (e) {
       if (e.key === 'Enter') document.getElementById('btn-tebak').click();
     });
 
@@ -2286,13 +2615,13 @@
     // ============================================
     // GTA 6 — CLICK + PASSWORD
     // ============================================
-    document.getElementById('gta6-img').onclick = function() {
+    document.getElementById('gta6-img').onclick = function () {
       var pesan = document.getElementById('gta6-pesan');
       pesan.style.display = 'block';
       pesan.scrollIntoView({ behavior: 'smooth', block: 'center' });
     };
 
-    document.getElementById('btn-jawaban').onclick = function() {
+    document.getElementById('btn-jawaban').onclick = function () {
       var judul = document.getElementById('judul-gta6');
       judul.innerHTML = 'Ntahlah cuman tuhan yang tau, ribet emang ini developernya 🤣';
       // Fun animation
@@ -2300,10 +2629,10 @@
       judul.offsetHeight;
       judul.style.transition = 'transform 0.5s ease';
       judul.style.transform = 'scale(1.05)';
-      setTimeout(function() { judul.style.transform = 'scale(1)'; }, 500);
+      setTimeout(function () { judul.style.transform = 'scale(1)'; }, 500);
     };
 
-    document.getElementById('btn-password').onclick = function() {
+    document.getElementById('btn-password').onclick = function () {
       var input = document.getElementById('input-password').value;
       var kodeBenar = 'R0ckstar66721';
 
@@ -2316,7 +2645,7 @@
     };
 
     // Enter key for password
-    document.getElementById('input-password').addEventListener('keypress', function(e) {
+    document.getElementById('input-password').addEventListener('keypress', function (e) {
       if (e.key === 'Enter') document.getElementById('btn-password').click();
     });
 
@@ -2358,10 +2687,10 @@
       pop.style.left = x + 'px';
       pop.style.top = y + 'px';
       document.body.appendChild(pop);
-      setTimeout(function() { pop.remove(); }, 700);
+      setTimeout(function () { pop.remove(); }, 700);
     }
 
-    document.getElementById('btn-start').onclick = function() {
+    document.getElementById('btn-start').onclick = function () {
       if (gameAktif) return;
 
       skor = 0;
@@ -2387,7 +2716,7 @@
       logo.style.display = 'block';
       pindahkanLogo();
 
-      intervalId = setInterval(function() {
+      intervalId = setInterval(function () {
         waktuSisa--;
         document.getElementById('timer').innerHTML = waktuSisa;
 
@@ -2433,7 +2762,7 @@
       }, 1000);
     };
 
-    document.getElementById('logo-game').onclick = function(e) {
+    document.getElementById('logo-game').onclick = function (e) {
       if (!gameAktif) return;
 
       skor++;
@@ -2447,7 +2776,7 @@
       this.style.transform = 'scale(1.2) rotate(10deg)';
 
       var self = this;
-      clickTimeoutId = setTimeout(function() {
+      clickTimeoutId = setTimeout(function () {
         if (gameAktif) {
           self.src = 'rockstar-game-logo.png';
           self.style.transform = 'scale(1) rotate(0deg)';
@@ -2461,7 +2790,7 @@
     // ============================================
     // PARALLAX EFFECT ON HERO
     // ============================================
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
       var scrollPos = window.scrollY;
       var hero = document.getElementById('hero');
       if (hero && scrollPos < window.innerHeight) {
@@ -2474,7 +2803,7 @@
     // ============================================
     // KEYBOARD SHORTCUT — ESC to close modal
     // ============================================
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
         document.getElementById('modal').style.display = 'none';
       }
@@ -2482,4 +2811,5 @@
 
   </script>
 </body>
+
 </html>
